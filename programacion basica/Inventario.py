@@ -28,7 +28,10 @@ iii. Por precio, ya sea por rangos, mayores o menores a un valor en particular
 iv. Opción para desplegar en pantalla o a un archivo plano la consulta específica.
 """
 
-print("Que busqueda desea realizar?\n-Codigo\nPrecio\nGeneral")
+print("\nQue busqueda desea realizar?")
+print('------------------------------\nOpciones:')
+print('\n-Codigo\n-Precio\n-General')
+print('------------------------------\n')
 consulta = input("> ")
 
 if consulta == "Codigo":
