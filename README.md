@@ -1,2 +1,3 @@
 # Fidelitas
-Poryectos de la Universidad Fidelitas
+Proyectos de la Universidad Fidelitas
+Por Binjie Liang
