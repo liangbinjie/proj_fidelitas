@@ -1,14 +1,14 @@
 from buscador import *
-from agregar import *
+from modificador import *
 
 
 running = True
 
 while running:
-    print("Que desea hacer?\n-Buscar\n-Agregar\n")
+    print("Que desea hacer?\n[1]Buscar\n[2]Agregar\n[3]Eliminar\n[0]Salir")
     do = input("> ")
 
-    if do.lower() == "buscar":
+    if do.lower() == "buscar" or do == "1":
         print('- - - - - - - - - - - - - - - - - - - -')
         tipo = input("Tipo de busqueda\n-General\n-Codigo\n-Precio\n\n >").lower()
         print('- - - - - - - - - - - - - - - - - - - -')
@@ -36,18 +36,25 @@ while running:
 
 
 
-    elif do.lower() == "agregar":
+    elif do.lower() == "agregar" or do == "2":
         print('- - - - - - - - - - - - - - - - - - - -')
         nombre_producto = input("Nombre de producto a agregar: ")
         codigo = input("Ingrese codigo de producto: ")
         precio = int(input("Ingrese precio de producto: "))
         stock = int(input("Ingrese cantidad de productos en inventario: "))
-        addProduct(nombre_producto.lower(), codigo, precio, stock)
+        agregar(nombre_producto.lower(), codigo, precio, stock)
+
+
+
+    elif do.lower() == "eliminar" or do == "3":
+        print('- - - - - - - - - - - - - - - - - - - -')
+        producto = input("Ingrese nombre o codigo de producto: ")
+        eliminar(producto)
 
 
 
 
     print('- - - - - - - - - - - - - - - - - - - -')
 
-    if do == "1":
+    if do.lower() == "salir" or do == "0":
         running = False
