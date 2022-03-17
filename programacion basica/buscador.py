@@ -24,12 +24,15 @@ def bcodigo(codigo):
 
 
 # Funcion de busqueda por rango de precios
-def brango(precio_i:int, precio_f:int):
-    # precio_i seria precio inicial y precio_f seria precio final, para marcar el rango de los precios
+def brango(rango_i:int, rango_f:int):
+    lista = []
+    # rango_i seria precio inicial y rango_f seria precio final, para marcar el rango de los precios
     with open("producto.txt") as productos:
         for linea in productos: # por cada linea que hay en producto.txt
-            datos = linea.split()
-            if int(datos[2]) >= precio_i and int(datos[2]) <= precio_f:
-                print(f"{datos[0]}: {datos[2]}")
-                return datos[2]
-# ?????
+            datos = linea.split() # dividimos los datos de cada linea
+            if int(datos[2]) >= rango_i and int(datos[2]) <= rango_f: # si los datos del precio es igual o mayor al rango inicial y menior o igual al rango final
+
+                lista.append(f"{datos[0]}: {datos[2]}") # agregamos el nombre del producto y su precio dentro del arreglo llamado lista
+                
+
+    return lista # al final regresamos el arreglo con todos los datos
