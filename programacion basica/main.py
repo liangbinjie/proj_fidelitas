@@ -24,14 +24,14 @@ while running:
 
 
         elif tipo == "precio":
-            precio_i = int(input("Ingrese precio inicial: "))
-            precio_f = int(input("Ingrese precio de rango final: "))
+            rango_i = int(input("Ingrese precio inicial: "))
+            rango_f = int(input("Ingrese precio de rango final: "))
 
-            if precio_f < precio_i:
-                print("Precio de rango final invalido")
+            if rango_f < rango_i:
+                print("\nPrecio de rango final invalido\nIntente denuevo")
 
             else:
-                print(brango(precio_i, precio_f))
+                print(brango(rango_i, rango_f))
 
 
 
@@ -43,6 +43,9 @@ while running:
         precio = int(input("Ingrese precio de producto: "))
         stock = int(input("Ingrese cantidad de productos en inventario: "))
         addProduct(nombre_producto.lower(), codigo, precio, stock)
+
+
+
 
     print('- - - - - - - - - - - - - - - - - - - -')
 
