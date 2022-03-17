@@ -8,15 +8,15 @@ Cambiar informacion del producto
 import os
 
 def agregar(nombre_producto, codigo, precio, stock):
-    with open("programacion basica/proyecto/producto.txt", 'a') as productos:
+    with open("producto.txt", 'a') as productos:
         productos.write(f"{nombre_producto} {codigo} {precio} {stock}\n")
     
     print("Producto:", nombre_producto, "| añadido a la base de datos")
 
 
 def eliminar(producto):
-    with open("programacion basica/proyecto/producto.txt", 'r') as productos:
-        with open("programacion basica/proyecto/eliminados.txt", 'w') as eliminado_file:
+    with open("producto.txt", 'r') as productos:
+        with open("eliminados.txt", 'w') as eliminado_file:
             for linea in productos:
                 datos = linea.split()
                 if producto not in datos:
@@ -28,7 +28,7 @@ def eliminar(producto):
                     print("Eliminando producto:", datos[0], "\nCodigo:", datos[1])
 
 
-    os.replace('programacion basica/proyecto/eliminados.txt', 'programacion basica/proyecto/producto.txt')
+    os.replace('eliminados.txt', 'producto.txt')
     
     if encontrado == 0:
         print("Producto no encontrado")
