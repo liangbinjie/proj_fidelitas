@@ -1,6 +1,6 @@
 # Modulo para hacer busqueda dentro del inventario
 
-productos_path = "programacion basica/proyecto/producto.txt"
+productos_path = "producto.txt"
 
 # Funcion para hacer una busqueda general
 def bgeneral(producto):
