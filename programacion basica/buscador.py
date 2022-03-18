@@ -48,3 +48,21 @@ def brango(rango_i:int, rango_f:int):
     print("Hay un total de", len(lista), "productos con ese rango de precio")
     return lista # al final regresamos el arreglo con todos los datos
 
+
+
+def bstock(producto):
+    # vamos a abrir el archivo plano donde estan almacenados los productos
+    with open(productos_path) as productos:
+        for linea in productos: # por cada linea que tiene el archivo plano
+            datos = linea.split(",") # dividiremos los datos que tiene cada linea
+            if producto in datos[0] or producto in datos[1]: # si el nombre del producto o codigo esta dentro de la linea
+                return int(datos[3]) # retornamos cuanto tenemos en stock
+
+
+def bprecio(producto):
+    # vamos a abrir el archivo plano donde estan almacenados los productos
+    with open(productos_path) as productos:
+        for linea in productos: # por cada linea que tiene el archivo plano
+            datos = linea.split(",") # dividiremos los datos que tiene cada linea
+            if producto in datos[0] or producto in datos[1]: # si el nombre del producto o codigo esta dentro de la linea
+                return int(datos[2]) # retornamos cuanto cuesta el producto
