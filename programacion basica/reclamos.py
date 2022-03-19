@@ -7,7 +7,7 @@ Las funciones presentaran lo siguiente
 """
 
 
-reclamos_path = "programacion basica/proyecto/reclamos.txt"
+reclamos_path = "reclamos.txt"
 
 
 # Funcion para agregar un nuevo reclamo 
