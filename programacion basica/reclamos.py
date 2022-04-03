@@ -5,9 +5,10 @@ Las funciones presentaran lo siguiente
 - Anotar y guardar el reclamo para su posterior consulta
 - Mostrar la cantidad de reclamos que se han ingresado
 """
+from os import system
 
 
-reclamos_path = "reclamos.txt"
+reclamos_path = "txt/reclamos.txt"
 
 
 # Funcion para agregar un nuevo reclamo 
@@ -22,7 +23,8 @@ def agregar_reclamo():
     with open(reclamos_path, 'a') as reclamos:
         reclamos.write(f"{reclamo}|{nombre}|{email}|{numero}\n") # agregar el reclamo
 
-    print("Hay un total de", cantReclamos(), "reclamos.")
+    print("Reclamo agregado a nuestro sistema")
+    # print("Hay un total de", cantReclamos(), "reclamos.")
 
 
 
@@ -35,4 +37,14 @@ def cantReclamos():
     return cantReclamos # retornamos la cantidad de reclamos
 
 
+
+def verReclamos():
+    cantReclamos = cantReclamos()
+    print(f"Hay {cantReclamos} reclamos")
+    reclamos = open('txt/reclamos.txt', 'r')
+    for linea in reclamos:
+        datos = linea.split('|')
+        input()
+        system('cls')
+        print(f"{datos[1]}: {datos[0]}\n{datos[2]} - {datos[3]}")
 # Autor: Binjie Liang

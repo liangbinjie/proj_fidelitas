@@ -8,8 +8,12 @@ Cambiar informacion del producto
 import os
 from buscador import *
 
+productos_path = "txt/producto.txt"
+eliminado_path = "txt/eliminados.txt"
+modificado_path = "txt/modificado.txt"
+
 def agregar(nombre_producto, codigo, precio, stock):
-    with open("producto.txt", 'a') as productos:
+    with open(productos_path, 'a') as productos:
         productos.write(f"{nombre_producto},{codigo},{precio},{stock}\n")
     
     print("Producto:", nombre_producto, "| añadido a la base de datos")
@@ -17,8 +21,8 @@ def agregar(nombre_producto, codigo, precio, stock):
 
 def eliminar(producto):
     encontrado = 0
-    with open("producto.txt", 'r') as productos:
-        with open("eliminados.txt", 'w') as eliminado_file:
+    with open(productos_path, 'r') as productos:
+        with open(eliminado_path, 'w') as eliminado_file:
             for linea in productos:
                 datos = linea.split(",")
 
@@ -31,7 +35,7 @@ def eliminar(producto):
                     print("Eliminando producto:", datos[0], "\nCodigo:", datos[1])
 
 
-    os.replace('eliminados.txt', 'producto.txt')
+    os.replace(eliminado_path, productos_path)
     
     if encontrado == 0:
         print("Producto no encontrado")
@@ -44,8 +48,8 @@ def eliminar(producto):
 
 def modificar(producto, dato, nuevo):
     # Primero buscamos el producto
-    with open("producto.txt", 'r') as productos:
-        with open("modificado.txt", 'w') as modificado:
+    with open(productos_path, 'r') as productos:
+        with open(modificado_path, 'w') as modificado:
             for line in productos:
                 datos = line.split(",")
 
@@ -66,5 +70,5 @@ def modificar(producto, dato, nuevo):
                     if dato == "stock":
                         modificado.write(f"{datos[0]},{datos[1]},{datos[2]},{nuevo}\n")
 
-    os.replace('modificado.txt', 'producto.txt')
+    os.replace(modificado_path, productos_path)
 
