@@ -9,20 +9,31 @@ factura_path = 'txt/factura.txt'
 def factura(comprado, subtotal):
     print("- "*13)
     print("\nProceso de facturacion\n")
-    empleado = input("Ingrese nombre empleado: ")
     cliente = input("Ingrese nombre de cliente: ")
     identificacion = input("Ingrese identificacion: ")
     telefono = input("Ingrese numero de telefono: ")
     direccion = input("Ingrese direccion: ")
 
+    if subtotal >= 1000000 and subtotal < 2000000:
+        descuento = 0.85
+        iva = subtotal * 0.13
+        total = (subtotal * 1.13) * descuento
+    
+    elif subtotal >= 2000000 and subtotal < 3000000:
+        descuento = 0.80
+        iva = subtotal * 0.13
+        total = (subtotal * 1.13) * descuento
 
-    iva = subtotal * 0.13
-    total = subtotal * 1.13
-
+    elif subtotal >= 3000000:
+        descuento = 0.70
+        iva = subtotal * 0.13
+        total = (subtotal * 1.13) * descuento  
+    
     
     factura =  open(factura_path, 'w')
     datos_cliente = f"Cliente: {cliente}\nIdentificacion: {identificacion}\nTelefono: {telefono}\nDireccion: {direccion}"
-    fact = f"Empleado: {empleado}\n\nProductos comprados\n{divisor}\n{comprado}\n{divisor}\n{datos_cliente}\n{divisor}\nSubtotal: ${subtotal}\nIVA: {iva}\nTotal: {round(total)}\n{divisor}\nGracias por visitarnos"
+    valores = f"Subtotal: ${subtotal}\nIVA: ${iva}\nDescuento: {100-(descuento*100)}%\nTotal: ${round(total)}"
+    fact = f"{datos_cliente}\n{divisor}\nProductos comprados\n{divisor}\n{comprado}\n{divisor}\n{valores}\n{divisor}\nGracias por visitarnos"
     factura.write(fact)
     return fact
 
