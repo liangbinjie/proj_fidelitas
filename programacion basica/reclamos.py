@@ -21,11 +21,9 @@ def agregar_reclamo():
 
     # abrimos el archivo plano de los reclamos con funcion de agregar una nueva linea
     with open(reclamos_path, 'a') as reclamos:
-        reclamos.write(f"{reclamo}|{nombre}|{email}|{numero}\n") # agregar el reclamo
+        reclamos.write(f"{reclamo}|{nombre}|{email}|{numero}\n") # agregamos el reclamo
 
     print("Reclamo agregado a nuestro sistema")
-    # print("Hay un total de", cantReclamos(), "reclamos.")
-
 
 
 # Funcion para mostrar la cantidad de reclamos que se han ingresado
@@ -37,14 +35,16 @@ def cantReclamos():
     return cantReclamos # retornamos la cantidad de reclamos
 
 
-
+# Funcion para mostrar los reclamos uno por uno
 def verReclamos():
-    cantReclamos = cantReclamos()
-    print(f"Hay {cantReclamos} reclamos")
-    reclamos = open('txt/reclamos.txt', 'r')
-    for linea in reclamos:
-        datos = linea.split('|')
+    cant_Reclamos = cantReclamos() # utilizando la funcion de ver la cantidad de reclamos, obtenemos la cantidad de reclamos
+    print(f"Hay {cant_Reclamos} reclamos")
+    reclamos = open('txt/reclamos.txt', 'r') # abrimos el archivo donde estan los reclamos
+    for linea in reclamos: # por cada linea (reclamo) que hay 
+        reclamo = linea.split('|')  # dividimos los datos
         input()
         system('cls')
-        print(f"{datos[1]}: {datos[0]}\n{datos[2]} - {datos[3]}")
+        print(f"{reclamo[1]}: {reclamo[0]}\n{reclamo[2]} - {reclamo[3]}") # imprimimos los resultados
+
+
 # Autor: Binjie Liang
