@@ -2,6 +2,7 @@ from buscador import *
 from modificador import *
 from os import system
 
+enter = "Presiona Enter para seguir"
 
 def inventario():
     running = True
@@ -21,7 +22,7 @@ def inventario():
                 print(bgeneral(nombre_producto))
                 txt(bgeneral(nombre_producto))
             
-                input()
+                input(enter)
                 system("cls")
 
 
@@ -36,7 +37,7 @@ def inventario():
                 else:
                     brango(rango_i, rango_f)
                 
-                input()
+                input(enter)
                 system("cls")
 
 
@@ -46,10 +47,16 @@ def inventario():
             print('- - - - - - - - - - - - - - - - - - - -')
             nombre_producto = input("Nombre de producto a agregar: ").lower()
             codigo = input("Ingrese codigo de producto: ")
-            precio = int(input("Ingrese precio de producto: "))
-            stock = int(input("Ingrese cantidad de productos en inventario: "))
-            agregar(nombre_producto, codigo, precio, stock)
-            input()
+            precio = input("Ingrese precio de producto: ")
+            stock = input("Ingrese cantidad de productos en inventario: ")
+            
+            if "" in (nombre_producto,codigo,precio,stock):
+                system('cls')
+                print("No se puedo agregar el producto, requiere informacion")
+            
+            else:
+                agregar(nombre_producto, codigo, precio, stock)
+            input(enter)
             system("cls")
         
         elif do == "modificar" or do == "4":
@@ -66,7 +73,7 @@ def inventario():
             else:
                 print("Producto no encontrado")
                 
-            input()
+            input(enter)
             system("cls")
 
 
@@ -78,13 +85,13 @@ def inventario():
             producto = input("Ingrese nombre o codigo de producto: ")
             eliminar(producto)
 
-            input()
+            input(enter)
             system("cls")
 
 
 
 
-        print('- - - - - - - - - - - - - - - - - - - -')
+        # print('- - - - - - - - - - - - - - - - - - - -')
 
         if do.lower() == "salir" or do == "0":
             running = False
