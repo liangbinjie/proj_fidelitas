@@ -2,6 +2,7 @@ from reclamos import *
 from comprar import *
 from os import system
 
+enter = "Presiona Enter para seguir"
 
 def cliente(respuesta):
 
@@ -18,14 +19,14 @@ def cliente(respuesta):
                 
             if client == "2":
                 system('cls')
-                allproductos()
-                input()
+                mostrarProductos()
+                input(enter)
                 system('cls')
             
             if client == "3":
                 system('cls')
                 agregar_reclamo()
-                input()
+                input(enter)
                 system('cls')
 
             if client == "4":
