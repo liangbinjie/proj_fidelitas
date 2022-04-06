@@ -1,11 +1,14 @@
-# Modulo para hacer busqueda dentro del inventario
+"""
+Modulo para hacer busqueda dentro del inventario
 
+"""
 
 
 productos_path = "txt/producto.txt"
 results_path = "txt/result.txt"
 
 
+# Funcion para escribir dentro de un archivo de texto
 def txt(info):
     with open(results_path, 'w') as result:
         result.write(info)
@@ -110,9 +113,28 @@ def bproducto(producto):
         return False
 
 
-def allproductos():
+# Funcion para mostrar todos los productos disponibles
+def mostrarProductos():
     with open(productos_path) as products_file:
         for linea in products_file:
             producto = linea.split(",")
             print(producto[0])
 
+
+def agotados():
+    print("Productos agotados: ")
+    with open(productos_path) as products_file:
+        for linea in products_file:
+            producto = linea.split(",")
+            if producto[3] == 0:
+                print(producto[0])
+
+
+def disponibles():
+    print("Productos disponibles: ")
+    with open(productos_path) as products_file:
+        for linea in products_file:
+            producto = linea.split(",")
+            if producto[3] != 0:
+                print(producto[0])
+            
