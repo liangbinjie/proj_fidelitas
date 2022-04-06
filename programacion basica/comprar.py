@@ -4,6 +4,37 @@ from os import system
 
 divisor = "-"*60
 factura_path = 'txt/factura.txt'
+reportes_path = 'txt/reportes.txt'
+
+
+def ventas(subtotal):
+
+    if subtotal < 1000000:
+        total = (subtotal * 1.13)
+        return total
+
+    elif subtotal >= 1000000 and subtotal < 2000000:
+        descuento = 0.85
+        total = (subtotal * 1.13) * descuento
+        return total
+    
+    elif subtotal >= 2000000 and subtotal < 3000000:
+        descuento = 0.80
+        total = (subtotal * 1.13) * descuento
+        return total
+
+    elif subtotal >= 3000000:
+        descuento = 0.70
+        total = (subtotal * 1.13) * descuento
+        return total  
+
+
+def reportes(subtotal):
+    venta = ventas(subtotal)
+    venta = str(round(venta))
+
+    with open(reportes_path, 'a') as reportes_files:
+        reportes_files.write(venta+"\n")
 
 
 def factura(comprado, subtotal):
@@ -14,7 +45,13 @@ def factura(comprado, subtotal):
     telefono = input("Ingrese numero de telefono: ")
     direccion = input("Ingrese direccion: ")
 
-    if subtotal >= 1000000 and subtotal < 2000000:
+    
+    if subtotal < 1000000:
+        descuento = 1
+        iva = subtotal * 0.13
+        total = (subtotal * 1.13)
+    
+    elif subtotal >= 1000000 and subtotal < 2000000:
         descuento = 0.85
         iva = subtotal * 0.13
         total = (subtotal * 1.13) * descuento
@@ -51,7 +88,7 @@ def comprar():
             valor = precio*cantidad # le damos el valor final al/los producto/s
             modificar(producto, "stock", stock-cantidad) # modificamos el stock
             print(f"Este producto tiene un precio de {precio} c/u")
-            print(f"Un valor de {valor} por estos productos")
+            print(f"Seria un valor de {valor} por estos productos")
             return int(valor), producto, cantidad # retornamos el valor, el producto y la cantidad comprada
 
         if cantidad > stock:
@@ -100,6 +137,7 @@ def proceso_compra():
     
 
     if facturar == 1:
+        reportes(subtotal)
         fact_impresa = factura(comprado, subtotal)
         print("Factura lista")
         input()
