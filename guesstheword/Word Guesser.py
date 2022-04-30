@@ -17,13 +17,14 @@ def nombre_ganador(nombre, palabra):
 def juego():
 
     palabra = choice(lista)[:-1]
-    print(palabra)
+    # print(palabra)
     adivinada = []
     for ch in range(len(palabra)):
         adivinada.append("_")
 
 
-    palabra_adivinada = ""
+    palabra_adivinada = list(palabra)
+
 
     print("\n[PISTA] La palabra comienza con", palabra[0] + "\n")
     input("Enter para seguir")
@@ -46,10 +47,12 @@ def juego():
         else:
             encontrado = len(palabra)
 
+            
             for ch in range(len(palabra)):
+                # si la letra esta dentro de la palabra
                 if letra in palabra[ch]:
                     adivinada[ch] = letra
-                    palabra_adivinada += letra
+
                 
                 elif letra not in palabra[ch]:
                     encontrado -= 1
@@ -58,14 +61,14 @@ def juego():
                 print("Incorrecto")
                 intentos -= 1
                 input()
-
-
-            if palabra_adivinada == palabra:
+            
+    
+            if palabra_adivinada == adivinada:
                 for i in adivinada:
                     print(i, end=" ")
                 print("\n\nGANASTE!!")
                 nombre = input("Ingrese tu nombre nuevamente: ")
-                nombre_ganador(nombre, palabra_adivinada)
+                nombre_ganador(nombre, palabra)
                 menu()
             
 
@@ -106,10 +109,10 @@ def main():
     on = True
 
     nombre_jugador = input("Ingrese su nombre: ")
-    edad = int(input("Ingrese su edad: "))
 
     print("Bienvenido", nombre_jugador)
     print("*"*60)
+    input('ENTER para seguir')
     while on:
         menu()
 
